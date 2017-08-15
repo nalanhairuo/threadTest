@@ -83,9 +83,6 @@ unsigned int __stdcall ConsumerThreadFun(PVOID pM)
 }
 int main()
 {
-    printf("  生产者消费者问题   1生产者 2消费者 4缓冲区\n");
-    printf(" -- by MoreWindows( http://blog.csdn.net/MoreWindows ) --\n\n");
-
     InitializeCriticalSection(&g_cs);
     //初始化信号量,一个记录有产品的缓冲区个数,另一个记录空缓冲区个数.
     g_hSemaphoreBufferEmpty = CreateSemaphore(NULL, 4, 4, NULL);

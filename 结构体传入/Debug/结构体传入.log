@@ -1,0 +1,7 @@
+﻿  源.cpp
+d:\soucecode\c++\多线程\c++多线程编程实战\结构体传入\源.cpp(97): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: 参见“strcpy”的声明
+d:\soucecode\c++\多线程\c++多线程编程实战\结构体传入\源.cpp(99): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: 参见“strcpy”的声明
+  结构体传入.vcxproj -> D:\soucecode\c++\多线程\C++多线程编程实战\Debug\结构体传入.exe
+  结构体传入.vcxproj -> D:\soucecode\c++\多线程\C++多线程编程实战\Debug\结构体传入.pdb (Full PDB)

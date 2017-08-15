@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <windows.h>
 #include <process.h>
+
 unsigned int __stdcall ThreadFun(LPVOID p)
 {
     printf("ID 号为%d的子线程说hello world\n", GetCurrentThreadId());
@@ -20,5 +21,6 @@ int main(void)
     }
 
     WaitForMultipleObjects(ThreadNum, ThreadHandle, true, INFINITE);
+
     return 0;
 }
