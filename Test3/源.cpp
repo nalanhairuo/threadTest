@@ -29,6 +29,7 @@ unsigned int __stdcall acqThread(LPVOID pPID)
     }
 
     PostThreadMessage(id, Quit_MSG, 0, 0);
+
     return 0;
 }
 

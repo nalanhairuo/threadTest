@@ -19,13 +19,15 @@ HANDLE  g_hThreadEvent;//子线程输出的线程序号不能重复
 unsigned int __stdcall ThreadFunction(LPVOID pPM)
 {
     int nVar = *(int *)pPM;
-    SetEvent(g_hThreadEvent);
-    EnterCriticalSection(&g_csThreadCode);
+    SetEvent(g_hThreadEvent);//触发事件
     Sleep(50);
+    EnterCriticalSection(&g_csThreadCode);//进入各子线程互斥区域
+
     g_nCount++;
     Sleep(0);
-    LeaveCriticalSection(&g_csThreadCode);
     printf("子线程序号%d,全局变量%d\n", nVar, g_nCount);
+    LeaveCriticalSection(&g_csThreadCode);//离开各子线程互斥区域
+
 
     return 0;
 }
@@ -34,18 +36,17 @@ int main(void)
 {
     //初始化事件和关键段 自动置位,初始无触发的匿名事件
     g_hThreadEvent = CreateEvent(NULL, FALSE, FALSE, NULL);
-    InitializeCriticalSection(&g_csThreadCode);
+    InitializeCriticalSection(&g_csThreadCode);//关键段初始化
     HANDLE hThreadHandle[g_nTHREAD_NUM];
 
     for (int i = 0; i < g_nTHREAD_NUM; i++)
     {
         hThreadHandle[i] = (HANDLE)_beginthreadex(nullptr, 0, ThreadFunction, &i, CREATE_SUSPENDED, nullptr);
         ResumeThread(hThreadHandle[i]);
-        WaitForSingleObject(g_hThreadEvent, INFINITE);
+        WaitForSingleObject(g_hThreadEvent, INFINITE);//等待事件被触发
     }
 
     WaitForMultipleObjects(g_nTHREAD_NUM, hThreadHandle, true, INFINITE);
-
     DeleteCriticalSection(&g_csThreadCode);
     CloseHandle(g_hThreadEvent);
 

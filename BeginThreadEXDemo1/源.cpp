@@ -3,6 +3,7 @@
 #include <process.h>
 
 int g_num = 0;
+const int nThreadNum = 10;
 
 unsigned int __stdcall ThreadFunction(LPVOID pPM)
 {
@@ -14,7 +15,7 @@ unsigned int __stdcall ThreadFunction(LPVOID pPM)
 
 int main(void)
 {
-    const int nThreadNum = 10;
+
     HANDLE hThreadHandle[nThreadNum];
 
     for (int i = 0; i < nThreadNum; i++)
@@ -23,5 +24,6 @@ int main(void)
     }
 
     WaitForMultipleObjects(nThreadNum, hThreadHandle, true, INFINITE);
+
     return 0;
 }

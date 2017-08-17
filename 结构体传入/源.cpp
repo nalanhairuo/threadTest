@@ -98,7 +98,6 @@ int main(void)
     threadData2.nMaxNum = 10;
     strcpy(threadData2.strThreadName, "线程2");
 
-
     //创建第一个子线程
     HANDLE hThread1 = CreateThread(NULL, 0, ThreadProc, &threadData1, 0, NULL);
     //创建第二个子线程

@@ -4,6 +4,8 @@
 #include <windows.h>
 #include <process.h>
 
+const int ThreadNum = 10;
+
 unsigned int __stdcall ThreadFun(LPVOID p)
 {
     printf("ID 号为%d的子线程说hello world\n", GetCurrentThreadId());
@@ -12,7 +14,7 @@ unsigned int __stdcall ThreadFun(LPVOID p)
 
 int main(void)
 {
-    const int ThreadNum = 10;
+
     HANDLE ThreadHandle[ThreadNum];
 
     for (int i = 0; i < ThreadNum; i++)
